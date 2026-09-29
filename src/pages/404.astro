@@ -1,0 +1,15 @@
+---
+import Button from "../components/ui/Button.astro";
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Page not found · osc">
+  <div class="mx-auto max-w-xl px-4 py-32 text-center">
+    <h1 class="text-5xl">Page not found.</h1>
+    <p class="mt-4 text-xl text-muted">This page doesn't exist, or it has moved.</p>
+    <div class="mt-8 flex justify-center gap-8">
+      <Button href="/" variant="link">Go home</Button>
+      <Button href="/docs" variant="link">Read the docs</Button>
+    </div>
+  </div>
+</Base>

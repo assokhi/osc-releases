@@ -1,0 +1,23 @@
+---
+// Apple-style actions: a filled pill, or a text link with a chevron ("Learn more ›").
+interface Props {
+  href: string;
+  variant?: "pill" | "link";
+}
+const { href, variant = "pill" } = Astro.props;
+---
+
+{
+  variant === "pill" ? (
+    <a href={href} class="inline-block rounded-full bg-button px-5 py-2 text-[15px] text-button-fg transition hover:opacity-90">
+      <slot />
+    </a>
+  ) : (
+    <a href={href} class="group inline-flex items-center gap-1 text-[17px] text-link">
+      <span class="group-hover:underline">
+        <slot />
+      </span>
+      <span aria-hidden="true">›</span>
+    </a>
+  )
+}

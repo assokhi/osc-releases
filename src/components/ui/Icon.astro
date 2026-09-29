@@ -1,0 +1,10 @@
+---
+// Renders a lucide-static SVG string. Decorative: always hidden from screen readers.
+interface Props {
+  svg: string;
+  class?: string;
+}
+const { svg, class: className = "size-5" } = Astro.props;
+---
+
+<span class:list={["inline-flex shrink-0 [&>svg]:size-full", className]} aria-hidden="true" set:html={svg} />

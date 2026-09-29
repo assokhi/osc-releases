@@ -1,0 +1,40 @@
+---
+import { Check, Copy } from "lucide-static";
+import { site } from "../../data/site";
+import Icon from "./Icon.astro";
+---
+
+<div class="flex items-center gap-3 rounded-xl border border-line bg-card py-1 pr-2 pl-4 text-left" data-install>
+  <code class="min-w-0 flex-1 overflow-x-auto py-2.5 font-mono text-[13px] whitespace-nowrap">
+    <span class="mr-1.5 text-muted select-none">PS&gt;</span>
+    <span data-command>{site.install}</span>
+  </code>
+  <button type="button" class="shrink-0 cursor-pointer rounded-full p-2.5 text-muted transition hover:bg-surface-2 hover:text-fg" aria-label="Copy install command">
+    <span data-copy-icon><Icon svg={Copy} class="size-4" /></span>
+    <span data-check-icon class="hidden text-link"><Icon svg={Check} class="size-4" /></span>
+    <span class="sr-only" data-label aria-live="polite"></span>
+  </button>
+</div>
+
+<script>
+  for (const box of document.querySelectorAll<HTMLElement>("[data-install]")) {
+    const label = box.querySelector("[data-label]")!;
+    const copyIcon = box.querySelector("[data-copy-icon]")!;
+    const checkIcon = box.querySelector("[data-check-icon]")!;
+    box.querySelector("button")!.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(box.querySelector("[data-command]")!.textContent!.trim());
+        label.textContent = "Copied";
+        copyIcon.classList.add("hidden");
+        checkIcon.classList.remove("hidden");
+      } catch {
+        label.textContent = "Select and copy";
+      }
+      setTimeout(() => {
+        label.textContent = "";
+        copyIcon.classList.remove("hidden");
+        checkIcon.classList.add("hidden");
+      }, 2000);
+    });
+  }
+</script>

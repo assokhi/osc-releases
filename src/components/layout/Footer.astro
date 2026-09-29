@@ -1,0 +1,37 @@
+---
+import { nav, site } from "../../data/site";
+
+const links = [{ label: "Home", href: "/" }, ...nav, { label: "Releases", href: site.releases }];
+---
+
+<footer class="bg-surface-2 text-muted">
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+    <div class="flex flex-col items-center gap-6 border-b border-line pb-8 sm:flex-row sm:justify-between">
+      <a href="/" class="flex items-center gap-2 text-base font-semibold text-fg">
+        <img src="/icon.png" alt="" width="24" height="24" class="size-6" />
+        {site.name}
+      </a>
+      <nav aria-label="Footer">
+        <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+          {
+            links.map((l) => (
+              <li>
+                <a href={l.href} class="text-fg/80 hover:text-fg hover:underline">{l.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mt-8 flex flex-col gap-3 text-xs leading-relaxed sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+      <p class="max-w-2xl">
+        osc is closed source and Windows only, and is not affiliated with Telegram. Files are stored unencrypted in
+        your own Telegram group. osc uses{" "}
+        <a href="https://github.com/iyear/tdl" class="text-fg hover:underline">tdl</a>{" "}and{" "}
+        <a href="https://mpv.io" class="text-fg hover:underline">mpv</a>, downloaded from their official releases.
+      </p>
+      <p class="shrink-0">© {new Date().getFullYear()} {site.name}</p>
+    </div>
+  </div>
+</footer>

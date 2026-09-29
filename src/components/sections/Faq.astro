@@ -1,0 +1,22 @@
+---
+import { Plus } from "lucide-static";
+import { faq } from "../../data/site";
+import Icon from "../ui/Icon.astro";
+import Section from "../ui/Section.astro";
+---
+
+<Section id="faq" title="Questions and answers.">
+  <div class="mx-auto mt-12 max-w-3xl border-b border-line">
+    {
+      faq.map(({ q, a }) => (
+        <details class="group border-t border-line">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+            {q}
+            <Icon svg={Plus} class="size-5 text-muted transition-transform group-open:rotate-45" />
+          </summary>
+          <p class="pb-6 leading-relaxed text-muted">{a}</p>
+        </details>
+      ))
+    }
+  </div>
+</Section>

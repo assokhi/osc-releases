@@ -1,0 +1,23 @@
+{
+  "name": "osc-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "html-validate \"dist/**/*.html\" && node scripts/privacy-guard.mjs",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && npm run check && wrangler deploy"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.5",
+    "lucide-static": "^1.48.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "html-validate": "^11.16.1",
+    "wrangler": "^4.143.0"
+  }
+}

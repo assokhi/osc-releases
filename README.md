@@ -12,3 +12,11 @@ Keeps your documents safe in your own private Telegram group.
 3. osc opens by itself. Next time, type **osc** in the Start menu.
 
 Running the same line again updates osc. To remove it, type `osc uninstall` in PowerShell.
+
+## Website
+
+The landing page and docs (Astro + Tailwind CSS, served by Cloudflare Workers) live in `src/`. Pushing to `main` deploys it.
+
+    npm install && npm run dev
+
+See [docs/website.md](docs/website.md) for the structure, checks and deploy setup.
